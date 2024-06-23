@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "MainServer",
+      "request": "launch",
+      "mainClass": "server.src.MainServer",
+      "projectName": "chat-app_3283c1be"
+    },
+    {
+      "type": "java",
+      "name": "UIHandler",
+      "request": "launch",
+      "mainClass": "client.src.UIHandler",
+      "projectName": "chat-app_3283c1be",
+      "vmArgs": "--module-path D:/Programming/java/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml"
+    },
+    {
+      "type": "java",
+      "name": "Launch Main",
+      "request": "launch",
+      "mainClass": "your.main.Class",
+      "projectName": "YourProjectName",
+      "vmArgs": "--module-path D:/Programming/java/openjfx-22.0.1_windows-x64_bin-sdk/javafx-sdk-22.0.1/lib --add-modules javafx.controls,javafx.fxml",
+      "args": ""
+    }
+  ]
+}

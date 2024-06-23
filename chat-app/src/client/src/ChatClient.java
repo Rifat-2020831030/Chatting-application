@@ -5,6 +5,7 @@ import java.net.*;
 
 import javafx.application.Platform;
 import server.src.FileTransferHandler;
+import server.src.MainServer;
 
 public class ChatClient {
     private Socket socket;
@@ -24,7 +25,6 @@ public class ChatClient {
 
         Platform.runLater(() -> uiHandler.showMessage("Connected to the server."));
 
-        // Send the username to the server
         String prompt = in.readLine();
         Platform.runLater(() -> uiHandler.showMessage(prompt));
         String username = uiHandler.getUsernameFromUser();
@@ -45,14 +45,15 @@ public class ChatClient {
         new Thread(new IncomingReader()).start();
     }
 
-    // Assuming IncomingReader is an inner class that handles incoming messages
     private class IncomingReader implements Runnable {
         String message;
+        @Override
         public void run() {
             try {
                 while ((message = in.readLine()) != null) {
                     if (message.startsWith("/activeUsers ")) {
-                        Platform.runLater(() -> uiHandler.updateActiveUsers(message.substring(13).split(" ")));
+                        Platform.runLater(() -> uiHandler.updateActiveUsers(message.substring(10).split(" ")));
+                        // Platform.runLater(() -> uiHandler.updateActiveUsers(message.substring(13).split(" ")));
                     } else {
                         Platform.runLater(() -> uiHandler.showMessage(message));
                     }
